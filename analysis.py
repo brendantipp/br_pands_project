@@ -37,4 +37,10 @@ plt.ylabel("Sepal Length")
 plt.ylabel("Sepal Width")
 plt.show()
 
+plt.scatter (df['petal_length'], df['petal_width'])
+plt.title ("Petal Lenght versus Petal Width")
+plt.xlabel("Petal Length")
+plt.ylabel("Petal Length")
+plt.ylabel("Petal Width")
+plt.show()
 
