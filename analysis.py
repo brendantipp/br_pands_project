@@ -8,6 +8,7 @@
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 ## Import the iris.csv dataset
@@ -30,4 +31,10 @@ df = pd.read_csv("iris.csv")
 #3 output a scatter plot of each pair of variables
 
 plt.scatter (df['sepal_length'], df['sepal_width'])
+plt.title ("Sepal Lenght versus Sepal Width")
+plt.xlabel("Sepal Length")
+plt.ylabel("Sepal Length")
+plt.ylabel("Sepal Width")
 plt.show()
+
+
