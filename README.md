@@ -17,20 +17,16 @@
 
 ## Contents of Repository 
 
-*anaylsis.py
-*myfunctions.py
-*iris.csv
-*.gitignore
-*licence 
+* anaylsis.py
+* myfunctions.py
+* iris.csv
+* .gitignore
+* licence 
 
 
 
 
-
-
-
-###################################
-Fishers Iris Data Set - Summary
+## Fishers Iris Data Set - **Summary**
 
 The Iris flower data set or Fisher's Iris data set is a multivariate data set introduced by the British statistician and biologist Ronald Fisher in his 1936 paper “The use of multiple measurements in taxonomic problems” as an example of linear discriminant analysis.
 It is sometimes called Anderson's Iris data set because Edgar Anderson collected the data to quantify the morphologic variation of Iris flowers of three related species.
@@ -42,22 +38,20 @@ Based on Fisher's linear discriminant model, this data set became a typical test
 The iris data set is widely used as a beginner's dataset for machine learning purposes.
 Source: https://en.wikipedia.org/wiki/Iris_flower_data_set
 
-
-####################################
-How to run the files and what code does
+## How to run the files and what code does
 
 To run the Anaylis of the Fisher Iris data set the user should run the program anaylis.py which is a python promgramme.
 The program should be run from a command line by typing in python anaylsis.py at the command prompt
 
-Why use Python as the preferred program
+### Why use Python as the preferred program
 
 To be finalised 
 
 By running the program (anaylsis.py) the following anaylis of the data set will be performed
 
-(1)A Summary output and summary text file will be created 
-(2)A histogram of each variable will be generated and saved as a png file in teh output directory
-(3)A scatter plot of each pair of variables will be createed adn will be visible on the screen
+1. A Summary output and summary text file will be created 
+2. A histogram of each variable will be generated and saved as a png file in teh output directory
+3. A scatter plot of each pair of variables will be createed adn will be visible on the screen
 
 
 There are a number of imported librarys used as can be seen at the top of the program code 
@@ -72,7 +66,7 @@ The Data Set was then immported as the Data frame for use in the anaylsis using 
 
 
 
-SUMMARY OUTPUT > The program will display both a summary on screen and create a summary.txt file in the local folder
+### SUMMARY OUTPUT > The program will display both a summary on screen and create a summary.txt file in the local folder
 	>The summary is created using the inbuilt pandas fucntion .describe
 	>The inbuilt pands function .round was used to round the decimal places on the summary output for improved display purposes
 
@@ -80,23 +74,19 @@ Detailed descrption of Summary output table
 
 
 
-HISTOGRAMS> 
+### HISTOGRAMS> 
 Created using the Matplotlib function plt.hist() save to file using plt.savefig()
 
 
-SCATTTER PLOTS >
+### SCATTTER PLOTS >
 Created using the Matplotlib function plt.scatter() 
 
 
 
-
-
-###################################
-Reseach Undertaken
+## Reseach Undertaken
 
 
 
 
 
-##################################
-References
+## References
