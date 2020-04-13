@@ -22,10 +22,12 @@ df = pd.read_csv("iris.csv")
 
 
 #1 output summary of each variable to a single txt file using pandas
+#https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_csv.html
 
 summary = df.describe()
-print(summary)
-# #np.savetxt("test",summary)
+#print(summary)
+summary.to_csv('test2.txt')
+
 
 
 
