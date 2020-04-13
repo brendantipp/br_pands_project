@@ -23,10 +23,11 @@ df = pd.read_csv("iris.csv")
 
 #1 output summary of each variable to a single txt file using pandas
 #https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_csv.html
+#https://www.datacourses.com/write-a-pandas-dataframe-to-a-csv-file-218/
 
 summary = df.describe()
-#print(summary)
-summary.to_csv('test2.txt')
+print(summary)
+summary.to_csv('test2.txt',sep="\t")
 
 
 
@@ -35,7 +36,7 @@ summary.to_csv('test2.txt')
 #2 create a histogram of each variable and save the graph/plot as a png file 
 
 plt.hist(df["sepal_length"])
-plt.show()
+#plt.show()
 plt.savefig("sepal_length_hist.png")
 #clear the axis
 #plt.clf()
