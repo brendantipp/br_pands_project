@@ -8,6 +8,7 @@
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 
@@ -20,29 +21,50 @@ df = pd.read_csv("iris.csv")
 
 
 
-#1 output summary of each variable to a single txt file 
+#1 output summary of each variable to a single txt file using pandas
+
+summary = df.describe()
+print(summary)
+# #np.savetxt("test",summary)
+
 
 
 
 #2 create a histogram of each variable and save the graph/plot as a png file 
 
+plt.hist(df["sepal_length"])
+plt.show()
+plt.savefig("sepal_length_hist.png")
+#clear the axis
+#plt.clf()
+
+
+
+
+
+
+
+
 
 
 #3 output a scatter plot of each pair of variables
+
+
+
 
 plt.scatter (df['sepal_length'], df['sepal_width'])
 plt.title ("Sepal Lenght versus Sepal Width")
 plt.xlabel("Sepal Length")
 plt.ylabel("Sepal Length")
 plt.ylabel("Sepal Width")
-plt.show()
+#plt.show()
 
 plt.scatter (df['petal_length'], df['petal_width'])
 plt.title ("Petal Lenght versus Petal Width")
 plt.xlabel("Petal Length")
 plt.ylabel("Petal Length")
 plt.ylabel("Petal Width")
-plt.show()
+#plt.show()
 
 
 
