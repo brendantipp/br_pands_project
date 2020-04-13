@@ -24,13 +24,13 @@ df = pd.read_csv("iris.csv")
 #1 output summary of each variable to a single txt file using pandas
 #https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_csv.html
 #https://www.datacourses.com/write-a-pandas-dataframe-to-a-csv-file-218/
+#https://backtobazics.com/python/pandas-describe-method-dataframe-summary/
 
-summary = df.describe()
+
+summary = df.describe().round(2)
 print(summary)
+print ("Please note this summary has also been outputed to a text file summary.txt")
 summary.to_csv('test2.txt',sep="\t")
-
-
-
 
 
 #2 create a histogram of each variable and save the graph/plot as a png file 
