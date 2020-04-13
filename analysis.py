@@ -8,7 +8,7 @@
 
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
+
 
 
 ## Import the iris.csv dataset
@@ -43,4 +43,7 @@ plt.xlabel("Petal Length")
 plt.ylabel("Petal Length")
 plt.ylabel("Petal Width")
 plt.show()
+
+
+
 
