@@ -8,7 +8,6 @@
 
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
 
 
 
@@ -18,9 +17,6 @@ df = pd.read_csv("iris.csv")
 
 
 #Program outputs 
-
-
-
 #1 output summary of each variable to a single txt file using pandas
 #https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_csv.html
 #https://www.datacourses.com/write-a-pandas-dataframe-to-a-csv-file-218/
@@ -30,7 +26,7 @@ df = pd.read_csv("iris.csv")
 summary = df.describe().round(2)
 print(summary)
 print ("Please note this summary has also been outputed to a text file summary.txt")
-summary.to_csv('test2.txt',sep="\t")
+summary.to_csv('summary.txt',sep="\t")
 
 
 #2 create a histogram of each variable and save the graph/plot as a png file 
@@ -41,19 +37,7 @@ plt.savefig("sepal_length_hist.png")
 #clear the axis
 #plt.clf()
 
-
-
-
-
-
-
-
-
-
 #3 output a scatter plot of each pair of variables
-
-
-
 
 plt.scatter (df['sepal_length'], df['sepal_width'])
 plt.title ("Sepal Lenght versus Sepal Width")
