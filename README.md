@@ -1,9 +1,9 @@
 # br_pands_project
-Project Programming and Scripting Brendan Ryan
+# Project Programming and Scripting Brendan Ryan
 
 
-###################################
-Project Plan
+
+## Project Plan
 1. Created Repository both local and on Github
 2. Added readme file to which contains a summary of data set below and my investigations
 2. Reasearched Fishers Iris Dat Set and worte summary as found below
@@ -15,14 +15,13 @@ Project Plan
 
 
 
-####################################
-Contents of Repository 
+## Contents of Repository 
 
-anaylsis.py
-myfunctions.py
-iris.csv
-.gitignore
-licence 
+*anaylsis.py
+*myfunctions.py
+*iris.csv
+*.gitignore
+*licence 
 
 
 
