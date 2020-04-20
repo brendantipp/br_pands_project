@@ -8,7 +8,7 @@
 
 import pandas as pd
 import matplotlib.pyplot as plt
-
+import seaborn as sns
 
 
 ## Import the iris.csv dataset
@@ -23,9 +23,13 @@ df = pd.read_csv("iris.csv")
 #https://backtobazics.com/python/pandas-describe-method-dataframe-summary/
 
 
+#use the pandas .describe() function to create a summary table and sing the round() fucntion to round the % to 2 decimal places for better presentation
 summary = df.describe().round(2)
+#using the numpy transpose function returns the axis of the table for better presentation
+summary = summary.transpose() 
 print(summary)
 print ("Please note this summary has also been outputed to a text file summary.txt")
+#using the \t tab seperator for better presenation of the summary table
 summary.to_csv('summary.txt',sep="\t")
 
 
@@ -52,7 +56,3 @@ plt.xlabel("Petal Length")
 plt.ylabel("Petal Length")
 plt.ylabel("Petal Width")
 #plt.show()
-
-
-
-
