@@ -2,7 +2,6 @@
 # Project Programming and Scripting Brendan Ryan
 
 
-
 ## Project Plan
 1. Created Repository both local and on Github
 2. Added readme file to which contains a summary of data set below and my investigations
@@ -14,7 +13,6 @@
 	- outputs a scatter plot of each of the pair of variables
 
 
-
 ## Contents of Repository 
 
 * anaylsis.py
@@ -22,8 +20,6 @@
 * iris.csv
 * .gitignore
 * licence 
-
-
 
 
 ## Fishers Iris Data Set - **Summary**
@@ -43,16 +39,9 @@ Source: https://en.wikipedia.org/wiki/Iris_flower_data_set
 To run the Anaylis of the Fisher Iris data set the user should run the program anaylis.py which is a python promgramme.
 The program should be run from a command line by typing in python anaylsis.py at the command prompt
 
-### Why use Python as the preferred program
+## Exploring the Data Set
 
-To be finalised 
-
-By running the program (anaylsis.py) the following anaylis of the data set will be performed
-
-1. A Summary output and summary text file will be created 
-2. A histogram of each variable will be generated and saved as a png file in teh output directory
-3. A scatter plot of each pair of variables will be createed adn will be visible on the screen
-
+>>insert here how i imported the data
 
 There are a number of imported librarys used as can be seen at the top of the program code 
 
@@ -65,13 +54,35 @@ The Fishers Irish Data Set  was downloaded from (insert website address here) in
 The Data Set was then immported as the Data frame for use in the anaylsis using the inbuilt pandas function pd.read.csv()
 
 
+By running the program (anaylsis.py) the following anaylis of the data set is  performed
+
+1. A Summary output and summary text file will be created 
+
+When explopring the data set a summary statistics table is a nice clean way to summarise and present my findings . 
+
+>??? insert here code that was used and a brief description of the libaries used
+I have used the inbuilt pandas .desscribe fucntion to create a summary table 
+For better presenation i have used the .round 
+For better presenation i have used the sep /t to prensnet that table in tablular format 
+
+> insert here a summary of the output table
+
+We can see from th summary table created 
+
+
+2. A histogram of each variable will be generated and saved as a png file in teh output directory
+
+>>As part of my data explopration I am using Histograms as they are a great way to show a visual representation of data distribution 
+
+
+3. A scatter plot of each pair of variables will be createed adn will be visible on the screen
+
 
 ### SUMMARY OUTPUT > The program will display both a summary on screen and create a summary.txt file in the local folder
 	>The summary is created using the inbuilt pandas fucntion .describe
 	>The inbuilt pands function .round was used to round the decimal places on the summary output for improved display purposes
 
 Detailed descrption of Summary output table 
-
 
 
 ### HISTOGRAMS> 
@@ -81,12 +92,11 @@ Created using the Matplotlib function plt.hist() save to file using plt.savefig(
 ### SCATTTER PLOTS >
 Created using the Matplotlib function plt.scatter() 
 
+### Why use Python as the preferred program
 
+To be finalised 
 
 ## Reseach Undertaken
-
-
-
 
 
 ## References
