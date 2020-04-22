@@ -39,7 +39,7 @@ Source: https://en.wikipedia.org/wiki/Iris_flower_data_set
 To run the Anaylis of the Fisher Iris data set the user should run the program anaylis.py which is a python promgramme.
 The program should be run from a command line by typing in python anaylsis.py at the command prompt
 
-## Exploring the Data Set
+## Exploring the Data Set and how Python can be used to do same
 
 >>insert here how i imported the data
 
@@ -77,6 +77,7 @@ We can see from th summary table created
 
 3. A scatter plot of each pair of variables will be createed adn will be visible on the screen
 
+I decided to use pairgrid beacuse PairGrid also allows you to quickly draw a grid of small subplots using the same plot type to visualize data in each. In a PairGrid, each row and column is assigned to a different variable, so the resulting plot shows each pairwise relationship in the dataset. This style of plot is sometimes called a “scatterplot matrix”, as this is the most common way to show each relationship, but PairGrid is not limited to scatterplots.
 
 ### SUMMARY OUTPUT > The program will display both a summary on screen and create a summary.txt file in the local folder
 	>The summary is created using the inbuilt pandas fucntion .describe
