@@ -12,11 +12,9 @@ import seaborn as sns
 import numpy as np
 import seaborn as sns
 
-
 ## Import the iris.csv dataset
 
 df = pd.read_csv("iris.csv")
-
 
 #Program outputs 
 #1 output summary of each variable to a single txt file using pandas
@@ -28,7 +26,7 @@ df = pd.read_csv("iris.csv")
 #use the pandas .describe() function to create a summary table and sing the round() fucntion to round the % to 2 decimal places for better presentation
 summary = df.describe().round(2)
 #using the numpy transpose function returns the axis of the table for better presentation
-summary = summary.transpose() 
+#summary = summary.transpose() 
 #print(summary)
 #print ("Please note this summary has also been outputed to a text file summary.txt")
 #using the \t tab seperator for better presenation of the summary table
@@ -36,27 +34,69 @@ summary = summary.transpose()
 
 
 #2 create a histogram of each variable and save the graph/plot as a png file 
+#https://www.datacamp.com/community/tutorials/histograms-matplotlib
 
-#plt.hist(df["sepal_length"])
+#df.hist(["sepal_length"])
+#plt.show()
+
+plt.hist(df["sepal_length"])
+plt.title("Sepal Length")
 #plt.show()
 #plt.savefig("sepal_length_hist.png")
+sns.FacetGrid(df,hue="species").map(sns.distplot,"sepal_length").add_legend()
+plt.show()
+sns.FacetGrid(df,hue="species").map(sns.distplot,"sepal_length").add_legend()
+plt.show()
+#plt.savefig("sepal_length_hist_species.png")
 #clear the axis
-#plt.clf()
+plt.clf()
+
+
+
+plt.hist(df["sepal_width"])
+plt.title("Sepal Width")
+#plt.show()
+#plt.savefig("sepal_width_hist.png")
+#clear the axis
+plt.clf()
+
+plt.hist(df["petal_length"])
+plt.title("Petal Length")
+#plt.show()
+#lt.savefig("petal_length_hist.png")
+#clear the axis
+plt.clf()
+
+plt.hist(df["petal_width"])
+plt.title("Petal Width")
+#plt.show()
+#plt.savefig("Petal_width_hist.png")
+#clear the axis
+plt.clf()
+
 
 #3 output a scatter plot of each pair of variables
 #https://matplotlib.org/3.1.0/gallery/subplots_axes_and_figures/subplots_demo.html
 #https://elitedatascience.com/python-seaborn-tutorial
+#https://seaborn.pydata.org/tutorial/axis_grids.html
+#also tested pairplot
+#tps://medium.com/codebagng/basic-analysis-of-the-iris-data-set-using-python-2995618a6342
 
 
-fig, ax1,ax2 = plt.subplots()
 
-ax1 = sns.PairGrid(df,vars=["sepal_length", "sepal_width"],hue="species", palette="husl")
-ax1.map(plt.scatter)
+#splot = sns.PairGrid(df,hue="species",)
+#plot = sns.PairGrid(df) #not showing each variable by category
+#splot.map(plt.scatter)
+#splot.add_legend()
+#plt.show()
+#plt.savefig("scatterplot.png")
+#clear the axis
+#plt.clf()
 
-ax2 = sns.PairGrid(df,vars=["petal_length", "petal_width"],hue="species", palette="husl")
-ax2.map(plt.scatter)
-
-fig.add_legend()
-plt.show()
 
 
+#didnt use below as it created a histogram
+#splot = sns.pairplot(hue='species', data=df)
+#splot.map(plt.scatter)
+#splot.add_legend()
+#plt.show()
