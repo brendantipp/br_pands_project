@@ -29,48 +29,34 @@ df = pd.read_csv("iris.csv")
 summary = df.describe().round(2)
 #using the numpy transpose function returns the axis of the table for better presentation
 summary = summary.transpose() 
-print(summary)
-print ("Please note this summary has also been outputed to a text file summary.txt")
+#print(summary)
+#print ("Please note this summary has also been outputed to a text file summary.txt")
 #using the \t tab seperator for better presenation of the summary table
-summary.to_csv('summary.txt',sep="\t")
+#summary.to_csv('summary.txt',sep="\t")
 
 
 #2 create a histogram of each variable and save the graph/plot as a png file 
 
-plt.hist(df["sepal_length"])
+#plt.hist(df["sepal_length"])
 #plt.show()
-plt.savefig("sepal_length_hist.png")
+#plt.savefig("sepal_length_hist.png")
 #clear the axis
 #plt.clf()
 
 #3 output a scatter plot of each pair of variables
 #https://matplotlib.org/3.1.0/gallery/subplots_axes_and_figures/subplots_demo.html
+#https://elitedatascience.com/python-seaborn-tutorial
 
-a = df["sepal_length"]
-b = df["sepal_width"]
-c = df["petal_length"]
-d = df["petal_width"]
 
-fig, ((ax1,ax2),(ax3,ax4)) = plt.subplots(nrows=2, ncols=2,figsize=(8, 4))
+fig, ax1,ax2 = plt.subplots()
 
-ax1.scatter(x=a, y=b, marker='o', c='r', edgecolor='b')
-ax1.set_title('Scatter: $a$ versus $b$')
-ax1.set_xlabel('$a$')
-ax1.set_ylabel('$b$')
+ax1 = sns.PairGrid(df,vars=["sepal_length", "sepal_width"],hue="species", palette="husl")
+ax1.map(plt.scatter)
 
-ax2.scatter(x=c, y=d, marker='o', c='r', edgecolor='b')
-ax2.set_title('Scatter: $c$ versus $d$')
-ax2.set_xlabel('$c$')
-ax2.set_ylabel('$d$')
+ax2 = sns.PairGrid(df,vars=["petal_length", "petal_width"],hue="species", palette="husl")
+ax2.map(plt.scatter)
 
-ax3.scatter(x=c, y=d, marker='o', c='r', edgecolor='b')
-ax3.set_title('Scatter: $c$ versus $a$')
-ax3.set_xlabel('$c$')
-ax3.set_ylabel('$d$')
-
-ax4.scatter(x=c, y=d, marker='o', c='r', edgecolor='b')
-ax4.set_title('Scatter: $c$ versus $a$')
-ax4.set_xlabel('$c$')
-ax4.set_ylabel('$d$')
-
+fig.add_legend()
 plt.show()
+
+
