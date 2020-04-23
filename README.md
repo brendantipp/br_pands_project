@@ -64,6 +64,7 @@ Numpy is
 I downloaded the Fishers Irish Data Set (widly available for download online)in text format and covnerted to csv fomat.
 
 The Data Set was then imported as the Data frame for use in the anaylsis using the inbuilt pandas function pd.read.csv() and the colums given names
+
     df = pd.read_csv("iris.csv")
 
 
@@ -72,6 +73,9 @@ The Data Set was then imported as the Data frame for use in the anaylsis using t
 1. A Summary output and summary text file will be created
 
 When explopring the data set a summary statistics table is a nice clean way to summarise and present the findings as shown below
+
+![Summary Table](https://github.com/brendantipp/br_pands_project/blob/master/readme_images/summary.PNG)
+
 
 (insert the summary table here when github is back running)
 
