@@ -64,7 +64,7 @@ Numpy is
 I downloaded the Fishers Irish Data Set (widly available for download online)in text format and covnerted to csv fomat.
 
 The Data Set was then imported as the Data frame for use in the anaylsis using the inbuilt pandas function pd.read.csv() and the colums given names
-df = pd.read_csv("iris.csv")
+    df = pd.read_csv("iris.csv")
 
 
 ### By running the program (anaylsis.py) the following anaylis of the data set is  performed
