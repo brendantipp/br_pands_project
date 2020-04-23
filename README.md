@@ -55,13 +55,13 @@ There are a number of imported librarys used as can be seen at the top of the pr
     import seaborn as sns
     import numpy as np
 
-Pandas is 
-Matplotlib is a python library used extensively for the visualization of data.
-Seaborn is a python library based on matplotlib.
+* Pandas is a library written for Python for data manipulation and analysis
+* Matplotlib is a python library used extensively for the visualization of data.
+* Seaborn is a python library based on matplotlib.
 Seaborn provides a high-level interface for drawing attractive and informative statistical graphics.
-Numpy is 
+* Numpy is the fundemental package for scientific computing withing Python
 
-I downloaded the Fishers Irish Data Set (widly available for download online)in text format and covnerted to csv fomat.
+I downloaded the Fishers Irish Data Set (widly available for download online) in text format and covverted to csv fomat.
 
 The Data Set was then imported as the Data frame for use in the anaylsis using the inbuilt pandas function pd.read.csv() and the colums given names
 
@@ -77,9 +77,6 @@ When explopring the data set a summary statistics table is a nice clean way to s
 ![Summary Table](https://github.com/brendantipp/br_pands_project/blob/master/readme_images/summary.PNG)
 
 
-(insert the summary table here when github is back running)
-
-
 #### Findings from investigating the summary table 
  
 We can determine that the data set contains 150 observations of the Iris Flowers Data Set.
@@ -89,16 +86,20 @@ We can see that the 150 observations are divided equally across the 3 species of
 
 
 For better presentation I used the .round() function to round to 2 decimal places
+
     summary = df.describe().round(2).transpose()
-I used the .to_csv function with  mode set to w to create a new file each time and \t to serpate output using tabs for better viewing
+
+I used the .to_csv function with  mode set to w parameter (write) to create a new file each time the program was run and \t to serpate output using tabs for better viewing
+
     summary.to_csv('summary.txt',mode = "w",sep="\t")
+
 I decided to include a summary counts of the type of species not included in the pandas .describe() function
+    
     summary2 = df["species"].value_counts()
-    summary2.to_csv('summary.txt',mode = "a",sep="\t", header="false") # using mode append to add to single text file
+    summary2.to_csv('summary.txt',mode = "a",sep="\t", header="false")
+    # using mode (a) append to add to single text file
 
-Summary file can be found in the repositor named summary.txt
-
-
+_Note: Summary file can be found in the repository as summary.txt_
 
 2. A histogram of each variable will be generated and saved as a png file in teh output directory
 
