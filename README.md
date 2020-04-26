@@ -189,18 +189,50 @@ From my reserach I realised that google is now my best friend when it comes to s
 
 The project has though given me a better appetitie for broadening and expanding on my python skills. 
 
-The project also gave me a bettter understanding of how to undertake a similar project in the future and the benefits of Git and having regular commmits - if im honest if I had start the project again I would do slightly different based on the skills if have now learnt and some of the mistaks i made along the way. I have also learnt alot about using markdown and applying this to my readme file.
-
-
+The project also gave me a bettter understanding of how to undertake a similar project in the future and the benefits of Git and having regular commmits - if im honest if I had start the project again I would do slightly different based on the skills I have learnt and some of the mistakes I made along the way. I have also learnt alot about using markdown and applying this to my readme file.
 
 # Software used
 *Annaconda
+*cmder
 *Visual Studio Code
 
 
-## Reseach Undertaken
+## Reseach Undertaken and references 
+
+### The data set reasearching and source files
+
+https://en.wikipedia.org/wiki/Iris_flower_data_set
+https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet#headers
+http://archive.ics.uci.edu/ml/datasets/iris
 
 
 
+### Data Frames
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_csv.html
+https://backtobazics.com/python/pandas-describe-method-dataframe-summary/
+https://docs.scipy.org/doc/numpy/reference/generated/numpy.savetxt.html
+https://stackoverflow.com/questions/17530542/how-to-add-pandas-data-to-an-existing-csv-file
+https://www.datacourses.com/write-a-pandas-dataframe-to-a-csv-file-218/
 
-## References
+
+## Plotting and Graphs 
+https://matplotlib.org/tutorials/introductory/pyplot.html#sphx-glr-tutorials-introductory-pyplot-py
+https://stackoverflow.com/questions/19614400/add-title-to-collection-of-pandas-hist-plots
+https://towardsdatascience.com/data-visualization-a6dccf643fbb
+https://seaborn.pydata.org/tutorial/axis_grids.html
+https://seaborn.pydata.org/generated/seaborn.pairplot.html
+https://www.datacamp.com/community/tutorials/histograms-matplotlib
+https://matplotlib.org/3.1.1/gallery/statistics/histogram_multihist.htm
+https://towardsdatascience.com/histograms-and-density-plots-in-python-f6bda88f5ac0
+
+https://seaborn.pydata.org/generated/seaborn.FacetGrid.html
+https://stackoverflow.com/questions/26163702/how-to-change-figuresize-using-seaborn-factorplot
+
+## Git Hub Markdown
+https://guides.github.com/features/mastering-markdown/
+
+## Other sources referenced and viwed
+https://medium.com/@sourabhghorpade16/exploratory-data-analysis-on-iris-dataset-part-1-a0afe7fc1efe
+https://github.com/simonava5/fishers-iris-data
+https://medium.com/@avulurivenkatasaireddy/exploratory-data-analysis-of-iris-data-set-using-python-823e54110d2d
+https://medium.com/codebagng/basic-analysis-of-the-iris-data-set-using-python-2995618a6342
