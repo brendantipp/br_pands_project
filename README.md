@@ -178,7 +178,7 @@ https://stackoverflow.com/questions/46307941/how-can-i-add-title-on-seaborn-lmpl
     fig.suptitle("Scatterplot analysis of Irish Dat Set Variables")
     plt.savefig("presentation\scatter_plot.png") #desitination of plot created
 
-![Scatter Plot of each Pair of Variables](https://github.com/brendantipp/br_pands_project/blob/master/presentation/scatter_plot.PNG)
+![Scatter Plot of each Pair of Variables](https://github.com/brendantipp/br_pands_project/blob/master/presentation/scatter_plot.png)
 
 I was not / am not totally happy with the position of the Title and am reseraching ways of displaying better - unfortunately if this text is still here i still have not found a way :-( 
 
