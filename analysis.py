@@ -13,8 +13,8 @@ import numpy as np
 
 # Import the iris.csv dataset and name as df
 df = pd.read_csv("iris.csv")
-#name the colums 
-names=['sepal_length','sepal_width','petal_length','petal_width','type']
+#after research define specias as type category thanks to https://github.com/simonava5/fishers-iris-data
+df['species'] = df['species'].astype('category')
 
 
 #Program outputs 
@@ -22,60 +22,74 @@ names=['sepal_length','sepal_width','petal_length','petal_width','type']
 #https://www.datacourses.com/write-a-pandas-dataframe-to-a-csv-file-218/
 #https://backtobazics.com/python/pandas-describe-method-dataframe-summary/
 #https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_csv.html
+
+
 #Create a summary using pandas .describe function
-
 summary = df.describe().round(2).transpose() ##For better presentation using the .round() function to round to 2 decimal places
-summary.to_csv('summary.txt',mode = "w",sep="\t") #output to csv using the .to_csv function, mode w to create new file each time \t to serpate outputu using tabs
+summary.to_csv('presentation\summary.csv',mode = "w",sep="\t", header = "false") #output to csv text using the .to_csv function, mode w to create new file each time \t to serpate outputu using tabs
 
-#decided to include a summary counts of the type of species not include in .describe function
-summary2 = df["species"].value_counts()
-summary2.to_csv('summary.txt',mode = "a",sep="\t", header="false") # using mode append to add to single text file
+#wanted to include a summary counts of each category of species not included in .describe function by using panas groupby function
+by_species = df.groupby('species')
+summary2 = by_species.describe().transpose().round(2) #use transpose to invert axis for better presentation
+summary2.to_csv('presentation\summary.csv',mode = "a",sep="\t", header="false") # using mode append to add to single csv text file
 
-print ("Please note this summary has also been outputed to a text file summary.txt") # to display on screen
 
+# print ("Please note this summary has also been outputed to a text file summary.txt") # to display on screen
 
 
 #2 create a histogram of each variable and save the graph/plot as a png file 
 #https://www.datacamp.com/community/tutorials/histograms-matplotlib
-
-#df.hist(["sepal_length"])
-#plt.show()
+#################################
 
 plt.hist(df["sepal_length"])
-plt.title("Sepal Length")
+plt.title("Sepal Length Histogram")
 plt.xlabel("Sepal_Length_cm") 
-plt.ylabel("Count") 
-#plt.show()
-#plt.savefig("sepal_length_hist.png")
-sns.FacetGrid(df,hue="species",height =4).map(sns.distplot,"sepal_length").add_legend()
-plt.show()
-pl#plt.savefig("sepal_length_hist_species.png")
-#clear the axis
+plt.ylabel("Count /Numbers") 
+plt.savefig("presentation\sepal_length_hist.png")
 plt.clf()
-
 
 
 plt.hist(df["sepal_width"])
-plt.title("Sepal Width")
-#plt.show()
-#plt.savefig("sepal_width_hist.png")
-#clear the axis
+plt.title("Sepal width Histogram")
+plt.xlabel("Sepal_width_cm") 
+plt.ylabel("Count /Numbers") 
+plt.savefig("presentation\sepal_width_hist.png")
 plt.clf()
+
 
 plt.hist(df["petal_length"])
-plt.title("Petal Length")
-#plt.show()
-#lt.savefig("petal_length_hist.png")
-#clear the axis
+plt.title("Petal Length Histogram")
+plt.xlabel("Petal_Length_cm") 
+plt.ylabel("Count /Numbers") 
+plt.savefig("presentation\petal_length_hist.png")
 plt.clf()
+
+
 
 plt.hist(df["petal_width"])
-plt.title("Petal Width")
-#plt.show()
-#plt.savefig("Petal_width_hist.png")
-#clear the axis
+plt.title("Petal Width Histogram")
+plt.xlabel("Petal_Width_cm") 
+plt.ylabel("Count /Numbers") 
+plt.savefig("presentation\petal_width_hist.png")
 plt.clf()
 
+plt.close()
+
+#diplay all for comparison simply using a matplotlib histogram
+df.hist()
+plt.show()
+
+
+#https://medium.com/@avulurivenkatasaireddy/exploratory-data-analysis-of-iris-data-set-using-python-823e54110d2d
+#https://seaborn.pydata.org/generated/seaborn.FacetGrid.html
+
+
+sns.FacetGrid(df,hue="species",height=3).map(sns.distplot,"sepal_length").add_legend()
+sns.FacetGrid(df,hue="species",height=3).map(sns.distplot,"petal_length").add_legend()
+
+plt.show()
+
+################################
 
 #3 output a scatter plot of each pair of variables
 #https://matplotlib.org/3.1.0/gallery/subplots_axes_and_figures/subplots_demo.html
@@ -85,20 +99,7 @@ plt.clf()
 #tps://medium.com/codebagng/basic-analysis-of-the-iris-data-set-using-python-2995618a6342
 
 
-
-#splot = sns.PairGrid(df,hue="species",)
-#plot = sns.PairGrid(df) #not showing each variable by category
-#splot.map(plt.scatter)
-#splot.add_legend()
-#plt.show()
-#plt.savefig("scatterplot.png")
-#clear the axis
-#plt.clf()
-
-
-
-#didnt use below as it created a histogram
-#splot = sns.pairplot(hue='species', data=df)
-#splot.map(plt.scatter)
-#splot.add_legend()
-#plt.show()
+sns.set_style("whitegrid");
+sns.pairplot(df, hue="species", height=2);
+plt.savefig("presentation\scatter_plot.png")
+plt.show()
