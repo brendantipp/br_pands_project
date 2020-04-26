@@ -44,34 +44,47 @@ summary2.to_csv('presentation\summary.txt',mode = "a",sep="\t")
 #################################
 #look at placing the following histogram script in a for loop?
 
-plt.hist(df["sepal_length"]) #plot histogram using matplotlib hist function
-plt.title("Analysis of Sepal Length Histogram") #insert a title for graph
-plt.xlabel("Sepal_Length_cm") #title the x axis
-plt.ylabel("Count /Numbers") #title the y axis
-plt.savefig("presentation\sepal_length_hist.png") #out to png file and save location
-plt.clf() #clear the axises
+vtypes = ["sepal_length", "sepal_width", "petal_length", "petal_width"]
 
-plt.hist(df["sepal_width"])
-plt.title("Analysis of Sepal width Histogram")
-plt.xlabel("Sepal_width_cm") 
-plt.ylabel("Count /Numbers") 
-plt.savefig("presentation\sepal_width_hist.png")
-plt.clf()
+#https://stackoverflow.com/questions/52155591/how-to-insert-string-into-a-string-as-a-variable
+for vname in vtypes:
+    df.hist([vname]) #plot histogram using matplotlib hist function
+    plt.xlabel(vname + " in cm")
+    plt.ylabel("Count")
+    plt.clf
+    plt.savefig("presentation/%s.png" %vname) #%s to indicate varibale is a string
+    #plt.show()
 
-plt.hist(df["petal_length"])
-plt.title("Analyis of Petal Length Histogram")
-plt.xlabel("Petal_Length_cm") 
-plt.ylabel("Count /Numbers") 
-plt.savefig("presentation\petal_length_hist.png")
-plt.clf()
+########### may not need below if for loop works and does the trick!
 
-plt.hist(df["petal_width"])
-plt.title("Petal Width Histogram")
-plt.xlabel("Petal_Width_cm") 
-plt.ylabel("Count /Numbers") 
-plt.savefig("presentation\petal_width_hist.png")
-plt.clf()
-plt.close()
+#plt.hist(df["sepal_length"]) #plot histogram using matplotlib hist function
+#plt.title("Analysis of Sepal Length Histogram") #insert a title for graph
+#plt.xlabel("Sepal_Length_cm") #title the x axis
+#plt.ylabel("Count /Numbers") #title the y axis
+#plt.savefig("presentation\sepal_length_hist.png") #out to png file and save location
+#plt.clf() #clear the axises
+
+#plt.hist(df["sepal_width"])
+#plt.title("Analysis of Sepal width Histogram")
+#plt.xlabel("Sepal_width_cm") 
+#plt.ylabel("Count /Numbers") 
+#plt.savefig("presentation\sepal_width_hist.png")
+#plt.clf()
+
+#plt.hist(df["petal_length"])
+#plt.title("Analyis of Petal Length Histogram")
+#plt.xlabel("Petal_Length_cm") 
+#plt.ylabel("Count /Numbers") 
+#plt.savefig("presentation\petal_length_hist.png")
+#plt.clf()
+
+#plt.hist(df["petal_width"])
+#plt.title("Petal Width Histogram")
+#plt.xlabel("Petal_Width_cm") 
+#plt.ylabel("Count /Numbers") 
+#plt.savefig("presentation\petal_width_hist.png")
+#plt.clf()
+#plt.close()
 
 #diplay all varibales for comparison simply using a matplotlib histogram
 #https://stackoverflow.com/questions/19614400/add-title-to-collection-of-pandas-hist-plots
