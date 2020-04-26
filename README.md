@@ -161,27 +161,46 @@ Again we can see that the flowers with sepal lengths of aprox 5cm and under are 
 
 3. A scatter plot of each pair of variables will be created and will be visible on the screen
 
-I decided to use Pairgrid beacuse PairGrid also allows you to quickly draw a grid of small subplots using the same plot type to visualize data in each. In a PairGrid, each row and column is assigned to a different variable, so the resulting plot shows each pairwise relationship in the dataset. This style of plot is sometimes called a “scatterplot matrix”, as this is the most common way to show each relationship, but PairGrid is not limited to scatterplots.
+I initally decided to use Pairgrid beacuse PairGrid also allows you to quickly draw a grid of small subplots using the same plot type to visualize data in each but in the end i decided on using the Seaborn builit in plotting function Pairplot
 
-### SUMMARY OUTPUT > The program will display both a summary on screen and create a summary.txt file in the local folder
-	>The summary is created using the inbuilt pandas fucntion .describe
-	>The inbuilt pands function .round was used to round the decimal places on the summary output for improved display purposes
+https://seaborn.pydata.org/generated/seaborn.pairplot.html
 
-Detailed descrption of Summary output table 
+I intially had no heading on the Scater plot as per below:
+
+    sns.pairplot(df, hue="species",height=2)
+    plt.savefig("presentation\scatter_plot.png") #desitination of plot created
+
+However for presentation purposes i felt it beter to have a main tile so changed code to below with a bit of help from this thread on a similar plot title query
+https://stackoverflow.com/questions/46307941/how-can-i-add-title-on-seaborn-lmplot
+
+    p = sns.pairplot(df, hue="species",height=2)
+    fig = p.fig
+    fig.suptitle("Scatterplot analysis of Irish Dat Set Variables")
+    plt.savefig("presentation\scatter_plot.png") #desitination of plot created
+
+![Scatter Plot of each Pair of Variables](https://github.com/brendantipp/br_pands_project/blob/master/presentation/scatter_plot.PNG)
+
+I was not / am not totally happy with the position of the Title and am reseraching ways of displaying better - unfortunately if this text is still here i still have not found a way :-( 
 
 
-### HISTOGRAMS> 
-Created using the Matplotlib function plt.hist() save to file using plt.savefig()
+## Project Summary
+
+From my reserach I realised that google is now my best friend when it comes to solving problems. It also shows that similar analysis of the Fishers Iris Data Set is widely available on the internet. Some of the code I could not understand especilaly around the area of Machine and extra uses of Data Frames in python.
+
+The project has though given me a better appetitie for broadening and expanding on my python skills. 
+
+The project also gave me a bettter understanding of how to undertake a similar project in the future and the benefits of Git and having regular commmits - if im honest if I had start the project again I would do slightly different based on the skills if have now learnt and some of the mistaks i made along the way. I have also learnt alot about using markdown and applying this to my readme file.
 
 
-### SCATTTER PLOTS >
-Created using the Matplotlib function plt.scatter() 
 
-### Why use Python as the preferred program
+# Software used
+*Annaconda
+*Visual Studio Code
 
-To be finalised 
 
 ## Reseach Undertaken
+
+
 
 
 ## References
