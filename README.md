@@ -20,20 +20,24 @@
 * myfunctions.py
 * iris.csv
 * .gitignore
-* licence 
+* licence
+* presentation folder (plots summary csv etc)
+* readme images (images embedded in readme)
 
 
 ## Fishers Iris Data Set - **Summary**
 
 The Iris flower data set or Fisher's Iris data set is a multivariate data set introduced by the British statistician and biologist Ronald Fisher in his 1936 paper “The use of multiple measurements in taxonomic problems” as an example of linear discriminant analysis.
 It is sometimes called Anderson's Iris data set because Edgar Anderson collected the data to quantify the morphologic variation of Iris flowers of three related species.
-Two of the three species were collected in the Gaspé Peninsula "all from the same pasture, and picked on the same day and measured at the same time by the same person with the same apparatus".[3] 
+Two of the three species were collected in the Gaspé Peninsula "all from the same pasture, and picked on the same day and measured at the same time by the same person with the same apparatus".
 
-##Investigating the Fishers Iris Data Set
+## Investigating the Fishers Iris Data Set
 
 The data set consists of 50 samples from each of three species of Iris (Iris setosa, Iris virginica and Iris versicolor).
+
 Four features were measured from each sample: the length and the width of the sepals and petals, in centimeters.
 Based on the combination of these four features, Fisher developed a linear discriminant model to distinguish the species from each other.
+
 Based on Fisher's linear discriminant model, this data set became a typical test case for many statistical classification techniques in machine learning such as support vector machines.
 The iris data set is widely used as a beginner's dataset for machine learning purposes.
 Source: https://en.wikipedia.org/wiki/Iris_flower_data_set
@@ -42,7 +46,7 @@ Source: https://en.wikipedia.org/wiki/Iris_flower_data_set
 ## Exploring the Data Set further and how Python can be used to perform the anaylsis of the data
 
 
-To run the Anaylis of the Fisher Iris data set the user should run the program anaylis.py which is a Python promgramme.
+To run the Analyis of the Fisher Iris data set the user should run the program anaylis.py which is a Python promgramme.
 The program should be run from a command line by typing in python anaylsis.py at the command prompt
 
 Python is an ideal tool for data anaylsis and offers programmers the advantage of using fewer lines of code to acocomplish tasks than one needs when using older languages.
@@ -68,9 +72,9 @@ The Data Set was then imported as the Data frame for use in the anaylsis using t
     df = pd.read_csv("iris.csv")
 
 
-### By running the program (anaylsis.py) the following anaylis of the data set is  performed
+## _By running the program (anaylsis.py) the following anaylis of the data set is  performed . All presentation items are outputed to the the presentation folder (summary, plots etc)_
 
-1. A Summary output and summary text file will be created
+### 1. A Summary output and summary text file will be created
 
 When explopring the data set a summary statistics table is a nice clean way to summarise and present the findings as shown below
 
@@ -80,26 +84,29 @@ When explopring the data set a summary statistics table is a nice clean way to s
 #### Findings from investigating the summary table 
  
 We can determine that the data set contains 150 observations of the Iris Flowers Data Set.
-The summary table outputs the count, mean,std and max of each of the individual varibales sepal_length, sepal_width, petal_lenght, petal_width
+
+The summary table outputs the Count, Mean, Standard Deviation (STD), 25% Quartile, Median, 75% Quartile, Maximum (Max) of each of the individual varibales sepal_length, sepal_width, petal_lenght, petal_width
+
+We can determine that there is a wide range in the size of Sepal Length and PetaL Lenght as opposed to the range in Sepal and petal width.
+We will in further analysis use Histograms and Scatter plots to visualise and determine if the size in Petal and Sepal lenght relates to the species of flower.
 
 We can see that the 150 observations are divided equally across the 3 species of flowers (setosa, virginica, versicolor) with 50 observations each
 
-
-For better presentation I used the .round() function to round to 2 decimal places
+For better presentation I used the .round() function to round the calcualtions to 2 decimal places
 
     summary = df.describe().round(2).transpose()
 
 I used the .to_csv function with  mode set to w parameter (write) to create a new file each time the program was run and \t to serpate output using tabs for better viewing
 
-    summary.to_csv('summary.txt',mode = "w",sep="\t")
+    summary.to_csv('summary.csv',mode = "w",sep="\t" header="false")
 
-I decided to include a summary counts of the type of species not included in the pandas .describe() function
+To examine the differences across species, the same summary statistics are generated per species using the .groupby module on the categorical species variable. Again for display purposes i have rouded to decimal places. Scatter plots used later on are a better way in my opninion of displaying this summary output
     
-    summary2 = df["species"].value_counts()
-    summary2.to_csv('summary.txt',mode = "a",sep="\t", header="false")
-    # using mode (a) append to add to single text file
+    by_species = df.groupby('species')
+    summary2 = by_species.describe().transpose().round(2)
+    summary2.to_csv('summary.csv',mode = "a",sep="\t", header="false") 
 
-_Note: Summary file can be found in the repository as summary.txt_
+_Note: Summary file can be found in the repository folder presentation named summary.csv_
 
 2. A histogram of each variable will be generated and saved as a png file in teh output directory
 
