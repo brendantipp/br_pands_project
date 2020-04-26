@@ -84,7 +84,7 @@ The Data Set was then imported as the Data frame for use in the anaylsis using t
 
 When explopring the data set a summary statistics table is a nice clean way to summarise and present the findings as shown below. I initally created as a CSV file but i reverted to a txt file for better presentation on screen. The txt file can easily be imported to excel if required.
 
-![Summary Table](https://github.com/brendantipp/br_pands_project/blob/master/readme_images/summary.PNG)
+![Summary Table](https://github.com/brendantipp/br_pands_project/blob/master/readme_images/summary.png)
 
 
 #### Findings from investigating the summary table 
@@ -145,16 +145,16 @@ I also created for better analysis a multi graph showing all of the histograms p
     plt.close()
 
 
-![Histogram Group of Varibales](https://github.com/brendantipp/br_pands_project/blob/master/presentation/histogram_analysis.PNG)
+![Histogram Group of Varibales](https://github.com/brendantipp/br_pands_project/blob/master/presentation/histogram_analysis.png)
 
 As mentioned previously we can determine that there is a wide range in the size of Sepal Length and PetaL Lenght as opposed to the range in Sepal and petal width. I used seaborns built in functions Facetgrid and Displot determine if there is a link between the range in sizes and the Sepcies (Category). The faceet grid/siplot combination is a very nice way of displaying relationships 
 
-![Histogram Petal Length by Species](https://github.com/brendantipp/br_pands_project/blob/master/presentation/petal_length_by_category.PNG)
+![Histogram Petal Length by Species](https://github.com/brendantipp/br_pands_project/blob/master/presentation/petal_length_by_category.png)
 
 From the above analysis we can see that of the flowers with  petal lenghts less than 2 cm are mostly in the Setosa Cateogry. Smaller numbers of each of the other flowers can be found distributed between lenghts ranging from 3 to 7 cm. We can link this back to our summary output where in particular the mean of the petal lenght is 1.46cm. The mean of petal length overall was 3.76cm
 
 
-![Histogram Sepal Length by Species ](https://github.com/brendantipp/br_pands_project/blob/master/presentation/sepal_length_by_category.PNG)
+![Histogram Sepal Length by Species ](https://github.com/brendantipp/br_pands_project/blob/master/presentation/sepal_length_by_category.png)
 
 Again we can see that the flowers with sepal lengths of aprox 5cm and under are the setosa sepecies with the majority of the setosa species sepal lenght in and around 5 cm
 
