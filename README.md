@@ -90,7 +90,7 @@ The Data Set was then imported as the Data frame for use in the anaylsis using t
 
 When explopring the data set a summary statistics table is a nice clean way to summarise and present the findings as shown below. I initally created as a CSV file but i reverted to a txt file for better presentation on screen. The txt file can easily be imported to excel if required.
 
-![Summary Table](https://github.com/brendantipp/br_pands_project/blob/master/readme_images/summary.png)
+![Summary Table](https://github.com/brendantipp/br_pands_project/blob/master/readme_images/summary.PNG)
 
 
 #### Findings from investigating the summary table 
