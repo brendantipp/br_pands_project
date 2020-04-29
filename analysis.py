@@ -26,7 +26,6 @@ summary = df.describe().round(2).transpose()
 #used mode w to create new file each time \t to seperate output using tabs
 summary.to_csv('presentation\summary.txt',mode = "w",sep="\t") 
 
-
 #using pandas groupby function for summary of each category as was not included in not included in .describe function
 by_species = df.groupby('species')
 #use transpose to invert axis for better presentation
@@ -39,50 +38,49 @@ summary2.to_csv('presentation\summary.txt',mode = "a",sep="\t")
 #https://stackoverflow.com/questions/52155591/how-to-insert-string-into-a-string-as-a-variable
 
 vtypes = ["sepal_length", "sepal_width", "petal_length", "petal_width"]
-for vname in vtypes:
+for vname in vtypes: #using a for loop to save code lines
     df.hist([vname]) #plot histogram using matplotlib hist function
-    plt.xlabel(vname + " in cm")
-    plt.ylabel("Count")
-    plt.clf
+    plt.xlabel(vname + " in cm") #label x axis
+    plt.ylabel("Count") #label y axis
+    plt.clf # clear axis
     plt.savefig("presentation/%s.png" %vname) #%s to indicate varibale is a string
-    #plt.show()
-
+    
 #diplay all varibales on one for comparison simply using a matplotlib histogram
 #https://stackoverflow.com/questions/19614400/add-title-to-collection-of-pandas-hist-plots
-df.hist()
-plt.suptitle("Analysis of all Four Variables")
-plt.savefig("presentation\histogram_analysis.png")
-plt.clf()
-plt.close()
+df.hist() #pandas historgram function .hist for my data frame
+plt.suptitle("Analysis of all Four Variables") #Give the overall graph a title
+plt.savefig("presentation\histogram_analysis.png") #save file as png
+plt.clf() #clear the axis
+plt.close() #close the plot
 #plt.show() #display the histogram if required
 
 #used a seaborn facetgrid and displot to further analysis any link between 
-#the speal and petal lenght versus the category of species
-#https://medium.com/@avulurivenkatasaireddy/exploratory-data-analysis-of-iris-data-set-using-python-823e54110d2d
 #https://seaborn.pydata.org/generated/seaborn.FacetGrid.html
 #https://stackoverflow.com/questions/26163702/how-to-change-figuresize-using-seaborn-factorplot
 
-sns.FacetGrid(df,hue="species",height=6,aspect=2).map(sns.distplot,"sepal_length",).add_legend()
-plt.ylabel ("count / numbers")
-plt.savefig("presentation\sepal_length_by_category.png")
-sns.FacetGrid(df,hue="species",height=6, aspect=2).map(sns.distplot,"petal_length").add_legend()
-plt.ylabel ("count / numbers")
-plt.savefig("presentation\petal_length_by_category.png")
-#plt.show()
-
+vtypes = ["sepal_length", "petal_length", ] #the speal and petal lenght versus the category of species
+for vname in vtypes: #using a for loop to save code lines
+    sns.FacetGrid(df,hue="species",height=4,aspect=2).map(sns.distplot,vname,).add_legend()
+    plt.ylabel ("count / numbers") #label y axis
+    plt.title("Displot by Species and %s " %vname)
+    # added bbox as title was getting cutoff https://stackoverflow.com/questions/21288062/second-y-axis-label-getting-cut-off
+    plt.savefig("presentation/%s_displot.png" %vname,bbox_inches='tight') #save output for each varibable passed
+    
 #3 output a scatter plot of each pair of variables
 #https://stackoverflow.com/questions/26139423/plot-different-color-for-different-categorical-levels-using-matplotlib
 #https://elitedatascience.com/python-seaborn-tutorial
 #https://seaborn.pydata.org/tutorial/axis_grids.html
-#https://medium.com/codebagng/basic-analysis-of-the-iris-data-set-using-python-2995618a6342
 #https://stackoverflow.com/questions/46307941/how-can-i-add-title-on-seaborn-lmplot
 
 #sets the style for the seaborn pairplot
 #the datarame , hue split dataframe up into colours based on species category
-p = sns.pairplot(df, hue="species",height=2)
+p = sns.pairplot(df, hue="species", height =2)
 fig = p.fig
 fig.suptitle("Scatterplot analysis of Irish Dat Set Variables")
-plt.savefig("presentation\scatter_plot.png") #desitination of plot created
-#plt.show() #display on screen if required 
+#the followign stops the title overlapping
+#https://stackoverflow.com/questions/7066121/how-to-set-a-single-main-title-above-all-the-subplots-with-pyplot
+fig.subplots_adjust(top=0.88)
+fig.savefig("presentation\scatter_plot.png") #desitination of plot created
+plt.show() #display on screen if required 
 
 print("Thanks, all presentation items are now available in the Presenation folder - I hope you enjoy and have a nice day!")
