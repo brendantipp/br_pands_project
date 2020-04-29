@@ -6,6 +6,7 @@
 #Description of each library can be found in readme file
 import pandas as pd #abbreviate library to simplyfy code
 import matplotlib.pyplot as plt #abbreviate library to simplyfy code
+import matplotlib.image as mpimg# to display image on screen
 import seaborn as sns #abbreviate library to simplyfy code
 import numpy as np #abbreviate library to simplyfy code
 
@@ -24,7 +25,10 @@ df['species'] = df['species'].astype('category') #category to be used for summar
 summary = df.describe().round(2).transpose() 
 #output to txt using the .to_csv function, decieded on txt over csv file type for on screen presentation
 #used mode w to create new file each time \t to seperate output using tabs
-summary.to_csv('presentation\summary.txt',mode = "w",sep="\t") 
+summary.to_csv('presentation\summary.txt',mode = "w",sep="\t")
+img = mpimg.imread('readme_images\summary.PNG')#to display summary on screen for presentation
+plt.imshow(img) #using matplotlib library matplotlib.image
+plt.show()
 
 #using pandas groupby function for summary of each category as was not included in not included in .describe function
 by_species = df.groupby('species')
@@ -34,37 +38,40 @@ summary2 = by_species.describe().transpose().round(2)
 summary2.to_csv('presentation\summary.txt',mode = "a",sep="\t") 
 
 #2 create a histogram of each variable and save the graph/plot as a png file 
+#https://stackoverflow.com/questions/19614400/add-title-to-collection-of-pandas-hist-plots
 #https://www.datacamp.com/community/tutorials/histograms-matplotlib
 #https://stackoverflow.com/questions/52155591/how-to-insert-string-into-a-string-as-a-variable
 
+#diplay all variables on one graph for comparison simply using a matplotlib histogram
+df.hist() #pandas historgram function .hist for my data frame
+plt.suptitle("Analysis of all Four Variables") #Give the overall graph a title
+plt.savefig("presentation\histogram_analysis.png") #save file as png
+plt.show()#diplat plot
+plt.close() #close the plot
+
+#then output all varibales individually and save output as png
 vtypes = ["sepal_length", "sepal_width", "petal_length", "petal_width"]
 for vname in vtypes: #using a for loop to save code lines
     df.hist([vname]) #plot histogram using matplotlib hist function
     plt.xlabel(vname + " in cm") #label x axis
     plt.ylabel("Count") #label y axis
-    plt.clf # clear axis
+    plt.show()
     plt.savefig("presentation/%s.png" %vname) #%s to indicate varibale is a string
+    plt.close() #close the plot
     
-#diplay all varibales on one for comparison simply using a matplotlib histogram
-#https://stackoverflow.com/questions/19614400/add-title-to-collection-of-pandas-hist-plots
-df.hist() #pandas historgram function .hist for my data frame
-plt.suptitle("Analysis of all Four Variables") #Give the overall graph a title
-plt.savefig("presentation\histogram_analysis.png") #save file as png
-plt.clf() #clear the axis
-plt.close() #close the plot
-#plt.show() #display the histogram if required
-
-#used a seaborn facetgrid and displot to further analysis any link between 
+#then used a seaborn facetgrid and displot to further analysis any link between 
 #https://seaborn.pydata.org/generated/seaborn.FacetGrid.html
 #https://stackoverflow.com/questions/26163702/how-to-change-figuresize-using-seaborn-factorplot
 
-vtypes = ["sepal_length", "petal_length", ] #the speal and petal lenght versus the category of species
+vtypes = ["sepal_length", "petal_length"] #the sepal and petal lenght versus the category of species
 for vname in vtypes: #using a for loop to save code lines
-    sns.FacetGrid(df,hue="species",height=4,aspect=2).map(sns.distplot,vname,).add_legend()
+    sns.FacetGrid(df,hue="species",height=4, aspect=2).map(sns.distplot,vname,).add_legend()
     plt.ylabel ("count / numbers") #label y axis
-    plt.title("Displot by Species and %s " %vname)
+    plt.title("Historgram of Species by %s " %vname,pad=.5)
     # added bbox as title was getting cutoff https://stackoverflow.com/questions/21288062/second-y-axis-label-getting-cut-off
     plt.savefig("presentation/%s_displot.png" %vname,bbox_inches='tight') #save output for each varibable passed
+    plt.show()
+    plt.close()
     
 #3 output a scatter plot of each pair of variables
 #https://stackoverflow.com/questions/26139423/plot-different-color-for-different-categorical-levels-using-matplotlib
@@ -74,13 +81,12 @@ for vname in vtypes: #using a for loop to save code lines
 
 #sets the style for the seaborn pairplot
 #the datarame , hue split dataframe up into colours based on species category
-p = sns.pairplot(df, hue="species", height =2)
-fig = p.fig
+p = sns.pairplot(df, hue="species", height=2) #sea born pairplot, hue(category color)
+fig = p.fig #to enable over figure plot title
 fig.suptitle("Scatterplot analysis of Irish Dat Set Variables")
 #the followign stops the title overlapping
 #https://stackoverflow.com/questions/7066121/how-to-set-a-single-main-title-above-all-the-subplots-with-pyplot
 fig.subplots_adjust(top=0.88)
 fig.savefig("presentation\scatter_plot.png") #desitination of plot created
 plt.show() #display on screen if required 
-
 print("Thanks, all presentation items are now available in the Presenation folder - I hope you enjoy and have a nice day!")
