@@ -179,7 +179,7 @@ From analysing above we can see by using petal length we can separate iris-setos
 
 From the above analysis we can also see that of the flowers with  petal lenghts less than 2 cm are mostly in the Setosa Cateogry. Smaller numbers of each of the other flowers can be found distributed between lenghts ranging from 3 to 7 cm. We can link this back to our summary output where in particular the mean of the petal lenght is 1.46cm. The mean of petal length overall was 3.76cm
 
-![Histogram Sepal Length by Species ](https://github.com/brendantipp/br_pands_project/blob/master/presentation/sepal_length_by_displot.png)
+![Histogram Sepal Length by Species ](https://github.com/brendantipp/br_pands_project/blob/master/presentation/sepal_length_displot.png)
 
 Again we can see that the flowers with sepal lengths of aprox 5cm and under are the setosa sepecies with the majority of the setosa species sepal lenght in and around 5 cm
 
