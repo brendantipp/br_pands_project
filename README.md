@@ -1,9 +1,8 @@
 # Project -  Programming and Scripting
+#GMIT APRIL 2020
 # Brendan Ryan - br_pands_project
-# April 2020 GMIT Student 
 
 ## _Analysis of the Fishers Iris Data Set_
-
 
 ## Project Plan
 1. Create Repository (both local and on Github)
@@ -26,7 +25,6 @@
 * licence
 * presentation folder (plots summary.txt etc)
 * readme images (images embedded in readme)
-
 
 ## Fishers Iris Data Set - **Summary**
 
@@ -51,9 +49,7 @@ The iris data set is widely used as a beginner's dataset for machine learning pu
 
 Source: https://en.wikipedia.org/wiki/Iris_flower_data_set
 
-
 ## Exploring the Data Set further and how Python can be used to perform the anaylsis of the data
-
 
 To run the Analyis of the Fisher Iris data set the user should run the program anaylis.py which is a Python promgramme.
 The program should be run from a command line by typing in python anaylsis.py at the command prompt.
@@ -65,6 +61,7 @@ There are a number of imported librarys used as can be seen at the top of the pr
 
     import pandas as pd #abbreviate library to simplyfy code
     import matplotlib.pyplot as plt #abbreviate library to simplyfy code
+    import matplotlib.image as mpimg# to display image on screen
     import seaborn as sns #abbreviate library to simplyfy code
     import numpy as np #abbreviate library to simplyfy code
 
@@ -86,7 +83,8 @@ The Data Set was then imported as the Data frame for use in the anaylsis using t
 
 ## _By running the program (anaylsis.py) the following anaylis of the data set is  performed . All presentation items are outputed to the the presentation folder (summary, plots etc)_
 
-### 1. A Summary output and summary text file will be created
+### 1. A Summary output and summary text file will be created.
+_PNG will display on screen as part of presentation_
 
 When explopring the data set a summary statistics table is a nice clean way to summarise and present the findings as shown below. I initally created as a CSV file but i reverted to a txt file for better presentation on screen. The txt file can easily be imported to excel if required.
 
@@ -111,10 +109,14 @@ For better presentation I used the .round() function to round the calcualtions t
     #round to 2 decimal places
     summary = df.describe().round(2).transpose()
 
-I used the .to_csv function with  mode set to w parameter (write) to create a new file each time the program was run and \t to serpate output using tabs for better viewing
+
+I used the .to_csv function with  mode set to w parameter (write) to create a new file each time the program was run and \t to serpate output using tabs for better viewing. I also used matplot.image lib imported library to display an output of the summary in PNG for the presentation.
 
     #used mode w to create new file each time \t to seperate output using tabs
     summary.to_csv('presentation\summary.txt',mode = "w",sep="\t") 
+    img = mpimg.imread('readme_images\summary.PNG')#to display summary on screen for presentation
+    plt.imshow(img) #using matplotlib library matplotlib.image
+    plt.show()
 
 To examine the differences across species, the same summary statistics are generated per species using the .groupby module on the categorical species variable. Again for display purposes i have rouded to decimal places. Scatter plots used later on are a better way in my opninion of displaying this summary output
     
@@ -131,37 +133,53 @@ _Note: Summary file can be found in the repository folder presentation named sum
 
 >>As part of my data explopration I am using Histograms as they are a great way to show a visual representation and get a better understanding of data distribution.
 
-By running the following code a histogram of each of the variables is outputted to the presentation folder for further analysis. I used a while loop to reduce the amount of code needed to create the indiviudal graphs,
+For better analysis i created a multi graph showing all of the histograms per variable one one graph (as shown below) as well as seperate outputs per variable.
+
+    #diplay all variables on one graph for comparison simply using a matplotlib histogram
+    df.hist() #pandas historgram function .hist for my data frame
+    plt.suptitle("Analysis of all Four Variables") #Give the overall graph a title
+    plt.savefig("presentation\histogram_analysis.png") #save file as png
+    plt.show()#diplat plot
+    plt.close() #close the plot
+
+
+By running the following code a histogram of each of the variables is outputted to the presentation folder for further analysis. I used a for loop to reduce the amount of code needed to create the indiviudal graphs,
 
     https://www.dataquest.io/blog/tutorial-advanced-for-loops-python-pandas
 
+    #then output all varibales individually and save output as png
+    vtypes = ["sepal_length", "sepal_width", "petal_length", "petal_width"]
+    for vname in vtypes: #using a for loop to save code lines
+        df.hist([vname]) #plot histogram using matplotlib hist function
+        plt.xlabel(vname + " in cm") #label x axis
+        plt.ylabel("Count") #label y axis
+        plt.show()
+        plt.savefig("presentation/%s.png" %vname) #%s to indicate varibale is a string
+        plt.close() #close the plot
 
-
-I also created for better analysis a multi graph showing all of the histograms per variable one graph (as shown below)
-
-    #diplay all varibales for comparison simply using a matplotlib histogram
-    #https://stackoverflow.com/questions/19614400/add-title-to-collection-of-pandas-hist-plots
-    df.hist()
-    plt.suptitle("Analysis of all Four Variables")
-    plt.savefig("presentation\histogram_analysis.png")
-    plt.clf()
-    plt.close()
-
-
-![Histogram Group of Varibales](https://github.com/brendantipp/br_pands_project/blob/master/presentation/histogram_analysis.png)
+ ![Histogram Group of Varibables](https://github.com/brendantipp/br_pands_project/blob/master/presentation/histogram_analysis.png)
 
 Looking at the overall distribution, petal length and petal width does not have a normal distribution, whereas sepal length and sepal width are uniformly distributed
 
- I used seaborns built in functions Facetgrid and Displot determine if there is a link between the range in sizes and the Sepcies (Category). The faceet grid/siplot combination is a very nice way of displaying relationships 
+I used seaborns built in functions Facetgrid and Displot determine if there is a link between the range in sizes and the Sepcies (Category). The faceet grid/siplot combination is a very nice way of displaying relationships 
 
-![Histogram Petal Length by Species](https://github.com/brendantipp/br_pands_project/blob/master/presentation/petal_length_by_category.png)
+    vtypes = ["sepal_length", "petal_length"] #the sepal and petal lenght versus the category of species
+    for vname in vtypes: #using a for loop to save code lines
+        sns.FacetGrid(df,hue="species",height=4, aspect=2).map(sns.distplot,vname,).add_legend()
+        plt.ylabel ("count / numbers") #label y axis
+        plt.title("Historgram of Species by %s " %vname,pad=.5)
+        # added bbox as title was getting cutoff https://stackoverflow.com/questions/21288062/second-y-axis-label-getting-cut-off
+        plt.savefig("presentation/%s_displot.png" %vname,bbox_inches='tight') #save output for each varibable passed
+        plt.show()
+        plt.close()
+
+![Histogram Petal Length by Species](https://github.com/brendantipp/br_pands_project/blob/master/presentation/petal_length_displot.png)
 
 From analysing above we can see by using petal length we can separate iris-setosa
 
 From the above analysis we can also see that of the flowers with  petal lenghts less than 2 cm are mostly in the Setosa Cateogry. Smaller numbers of each of the other flowers can be found distributed between lenghts ranging from 3 to 7 cm. We can link this back to our summary output where in particular the mean of the petal lenght is 1.46cm. The mean of petal length overall was 3.76cm
 
-
-![Histogram Sepal Length by Species ](https://github.com/brendantipp/br_pands_project/blob/master/presentation/sepal_length_by_category.png)
+![Histogram Sepal Length by Species ](https://github.com/brendantipp/br_pands_project/blob/master/presentation/sepal_length_by_displot.png)
 
 Again we can see that the flowers with sepal lengths of aprox 5cm and under are the setosa sepecies with the majority of the setosa species sepal lenght in and around 5 cm
 
@@ -183,27 +201,31 @@ However for presentation purposes I felt it beter to have a main title so change
 
 https://stackoverflow.com/questions/46307941/how-can-i-add-title-on-seaborn-lmplot
 
-    p = sns.pairplot(df, hue="species",height=2)
+    #sets the style for the seaborn pairplot
+    #the datarame , hue split dataframe up into colours based on species category
+    p = sns.pairplot(df, hue="species", height=2)
     fig = p.fig
     fig.suptitle("Scatterplot analysis of Irish Dat Set Variables")
-    plt.savefig("presentation\scatter_plot.png") #desitination of plot created
+    #the followign stops the title overlapping
+    #https://stackoverflow.com/questions/7066121/how-to-set-a-single-main-title-above-all-the-subplots-with-pyplot
+    fig.subplots_adjust(top=0.88)
+    fig.savefig("presentation\scatter_plot.png") #desitination of plot created
+    plt.show() #display on screen if required 
 
 ![Scatter Plot of each Pair of Variables](https://github.com/brendantipp/br_pands_project/blob/master/presentation/scatter_plot.png)
 
 From the above scatter plot, there seems to be a positive correlation between the length and width of all the species, however there is a distinguishing strong relationship between petal length and petal width. 
 From the above scatter plot we can also isolate iris sotosa from the other species based on any two pairs of variables.
 
-I was not / am not totally happy with the position of the Title and am reseraching ways of displaying better - unfortunately if this text is still here i still have not found a way :-( 
-
 ## Project Summary
 
-From my reserach I realised that google is now my best friend when it comes to solving problems. It also shows that similar analysis of the Fishers Iris Data Set is widely available on the internet. Some of the code I could not understand especilaly around the area of Machine and extra uses of Data Frames in python.
+From my reserach I realised that google is now my best friend when it comes to solving problems. From my research and and time on google it became apparent that similar analysis of the Fishers Iris Data Set is widely available on the internet. Some of the code I could not understand especilaly around the area of Machine and extra uses of Data Frames in python.
 
-The project has though given me a better appetitie for broadening and expanding on my python skills. 
+The project has though, given me a better appetitie for broadening and expanding on my python and programming skills in general. 
 
 The project also gave me a bettter understanding of how to undertake a similar project in the future and the benefits of Git and having regular commmits - if im honest if I had start the project again I would do slightly different based on the skills I have learnt and some of the mistakes I made along the way. I have also learnt alot about using markdown and applying this to my readme file.
 
-# Software used
+## Software used
 *Annaconda
 *cmder
 *Visual Studio Code
@@ -216,8 +238,6 @@ The project also gave me a bettter understanding of how to undertake a similar p
 https://en.wikipedia.org/wiki/Iris_flower_data_set
 https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet#headers
 http://archive.ics.uci.edu/ml/datasets/iris
-
-
 
 ### Data Frames
 https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_csv.html
