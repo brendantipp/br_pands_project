@@ -55,7 +55,7 @@ for vname in vtypes: #using a for loop to save code lines
     df.hist([vname]) #plot histogram using matplotlib hist function
     plt.xlabel(vname + " in cm") #label x axis
     plt.ylabel("Count") #label y axis
-    plt.show()
+    #plt.show() disbaled not requierd for presenation as other histograms created
     plt.savefig("presentation/%s.png" %vname) #%s to indicate varibale is a string
     plt.close() #close the plot
     
@@ -63,7 +63,7 @@ for vname in vtypes: #using a for loop to save code lines
 #https://seaborn.pydata.org/generated/seaborn.FacetGrid.html
 #https://stackoverflow.com/questions/26163702/how-to-change-figuresize-using-seaborn-factorplot
 
-vtypes = ["sepal_length", "petal_length"] #the sepal and petal lenght versus the category of species
+ #Create for all variables versus the category of species
 for vname in vtypes: #using a for loop to save code lines
     sns.FacetGrid(df,hue="species",height=4, aspect=2).map(sns.distplot,vname,).add_legend()
     plt.ylabel ("count / numbers") #label y axis

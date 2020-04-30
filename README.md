@@ -153,7 +153,6 @@ By running the following code a histogram of each of the variables is outputted 
         df.hist([vname]) #plot histogram using matplotlib hist function
         plt.xlabel(vname + " in cm") #label x axis
         plt.ylabel("Count") #label y axis
-        plt.show()
         plt.savefig("presentation/%s.png" %vname) #%s to indicate varibale is a string
         plt.close() #close the plot
 
@@ -163,7 +162,7 @@ Looking at the overall distribution, petal length and petal width does not have 
 
 I used seaborns built in functions Facetgrid and Displot determine if there is a link between the range in sizes and the Sepcies (Category). The faceet grid/siplot combination is a very nice way of displaying relationships 
 
-    vtypes = ["sepal_length", "petal_length"] #the sepal and petal lenght versus the category of species
+    #then output all varibales individually and save output as png (initially was only going to display two)
     for vname in vtypes: #using a for loop to save code lines
         sns.FacetGrid(df,hue="species",height=4, aspect=2).map(sns.distplot,vname,).add_legend()
         plt.ylabel ("count / numbers") #label y axis
@@ -214,6 +213,7 @@ https://stackoverflow.com/questions/46307941/how-can-i-add-title-on-seaborn-lmpl
 
 ![Scatter Plot of each Pair of Variables](https://github.com/brendantipp/br_pands_project/blob/master/presentation/scatter_plot.png)
 
+The scatter plot allows us to look at the interactions between the variables.
 From the above scatter plot, there seems to be a positive correlation between the length and width of all the species, however there is a distinguishing strong relationship between petal length and petal width. 
 From the above scatter plot we can also isolate iris sotosa from the other species based on any two pairs of variables.
 
