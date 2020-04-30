@@ -147,7 +147,7 @@ By running the following code a histogram of each of the variables is outputted 
 
     https://www.dataquest.io/blog/tutorial-advanced-for-loops-python-pandas
 
-    #then output all varibales individually and save output as png
+    #then output all variables individually and save output as png
     vtypes = ["sepal_length", "sepal_width", "petal_length", "petal_width"]
     for vname in vtypes: #using a for loop to save code lines
         df.hist([vname]) #plot histogram using matplotlib hist function
@@ -162,7 +162,7 @@ Looking at the overall distribution, petal length and petal width does not have 
 
 I used seaborns built in functions Facetgrid and Displot determine if there is a link between the range in sizes and the Sepcies (Category). The faceet grid/siplot combination is a very nice way of displaying relationships 
 
-    #then output all varibales individually and save output as png (initially was only going to display two)
+    #then output all variables individually and save output as png (initially was only going to display two)
     for vname in vtypes: #using a for loop to save code lines
         sns.FacetGrid(df,hue="species",height=4, aspect=2).map(sns.distplot,vname,).add_legend()
         plt.ylabel ("count / numbers") #label y axis
@@ -226,9 +226,9 @@ The project has though, given me a better appetitie for broadening and expanding
 The project also gave me a bettter understanding of how to undertake a similar project in the future and the benefits of Git and having regular commmits - if im honest if I had start the project again I would do slightly different based on the skills I have learnt and some of the mistakes I made along the way. I have also learnt alot about using markdown and applying this to my readme file.
 
 ## Software used
-*Annaconda
-*cmder
-*Visual Studio Code
+* Annaconda
+* cmder
+* Visual Studio Code
 
 
 ## Reseach Undertaken and references 
